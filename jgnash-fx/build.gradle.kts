@@ -15,13 +15,13 @@ plugins {
     application // creates a task to run the full application
     `java-library`
     id("org.openjfx.javafxplugin")
-    id("edu.sc.seis.macAppBundle")
+//    id("edu.sc.seis.macAppBundle")
 }
 
 val jGnashVersion : String = version.toString()
 
 application {
-    mainClassName = "jgnash.app.jGnash"
+    mainClass.set("jgnash.app.jGnash")
 }
 
 dependencies {
@@ -149,13 +149,13 @@ distributions {
     }
 }
 
-macAppBundle {
-    appStyle = "universalJavaApplicationStub"
-    appName = "jGnash-$jGnashVersion"
-    mainClassName = "jgnash.app.jGnash"
-    icon = "../deployfx/gnome-money.icns"
-    javaProperties["apple.laf.useScreenMenuBar"] = "true"
-}
+//macAppBundle {
+//    appStyle = "universalJavaApplicationStub"
+//    appName = "jGnash-$jGnashVersion"
+//    mainClassName = "jgnash.app.jGnash"
+//    icon = "../deployfx/gnome-money.icns"
+//    javaProperties["apple.laf.useScreenMenuBar"] = "true"
+//}
 
 /**
  * Returns a proper Class-Path entry for the manifest file

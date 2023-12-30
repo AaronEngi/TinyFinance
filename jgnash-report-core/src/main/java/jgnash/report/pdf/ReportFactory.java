@@ -22,7 +22,7 @@ import java.util.prefs.Preferences;
 
 /**
  * Factory methods to help with report configuration and generation
- * 
+ *
  * @author Craig Cavanaugh
  */
 public class ReportFactory {
@@ -42,21 +42,18 @@ public class ReportFactory {
      */
     private final static String HEADER = "header";
 
-    private final static String[] DEFAULT_MONO_FONTS = { "Courier New", "Andale Mono", "Noto Sans Mono Regular",
-                    "Luxi Mono", "Liberation Mono", "Comic Sans MS" };
+    private final static String[] DEFAULT_MONO_FONTS = {"仿宋", "Courier New", "Andale Mono", "Noto Sans Mono Regular", "Luxi Mono", "Liberation Mono", "Comic Sans MS"};
 
-    private final static String[] DEFAULT_PROPORTIONAL_FONTS = { "Times New Roman", "Noto Sans Mono Regular", "Luxi Serif",
-                    "Liberation Serif" };
+    private final static String[] DEFAULT_PROPORTIONAL_FONTS = {"仿宋", "Times New Roman", "Noto Sans Mono Regular", "Luxi Serif", "Liberation Serif"};
 
-    private final static String[] DEFAULT_HEADER_FONTS = { "Arial Bold", "Noto Sans Bold", "Luxi Serif",
-            "Liberation Serif" };
+    private final static String[] DEFAULT_HEADER_FONTS = {"仿宋", "Arial Bold", "Noto Sans Bold", "Luxi Serif", "Liberation Serif"};
 
     private ReportFactory() {
     }
 
     /**
      * Returns a report name for a mono spaced, PDF embeddable report
-     * 
+     *
      * @return The report name for a mono spaced report
      */
     private static String getDefaultMonoFont() {
@@ -73,7 +70,7 @@ public class ReportFactory {
 
     /**
      * Returns a report name for a proportional, PDF embeddable report
-     * 
+     *
      * @return The report name for a proportional spaced report
      */
     private static String getDefaultProportionalFont() {
@@ -96,6 +93,7 @@ public class ReportFactory {
     private static String getDefaultHeaderFont() {
 
         final List<String> fonts = FontRegistry.getFontList();
+//        System.out.println("fonts = " + fonts);
 
         for (String knownFont : DEFAULT_HEADER_FONTS) {
             if (fonts.contains(knownFont)) {
@@ -107,7 +105,7 @@ public class ReportFactory {
 
     /**
      * Returns the name of the mono spaced font to use
-     * 
+     *
      * @return name of the mono spaced font to use
      */
     public static String getMonoFont() {
@@ -117,7 +115,7 @@ public class ReportFactory {
 
     /**
      * Returns the name of the proportional spaced font to use
-     * 
+     *
      * @return name of the proportional spaced font to use
      */
     public static String getProportionalFont() {
@@ -137,7 +135,7 @@ public class ReportFactory {
 
     /**
      * Sets the name of the mono spaced font to use
-     * 
+     *
      * @param font report name to use
      */
     public static void setMonoFont(final String font) {
@@ -147,7 +145,7 @@ public class ReportFactory {
 
     /**
      * Sets the name of the proportional spaced font to use
-     * 
+     *
      * @param font font name to use
      */
     public static void setProportionalFont(final String font) {

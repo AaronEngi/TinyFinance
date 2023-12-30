@@ -4,9 +4,14 @@ plugins {
 
 allprojects {
     repositories {
+        mavenLocal()
+        maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven { setUrl("https://maven.aliyun.com/repository/central") }
+        maven { setUrl("https://maven.aliyun.com/repository/google") }
+
         mavenCentral()
         jcenter()
-        mavenLocal()
     }
 
     apply(plugin = "java")
