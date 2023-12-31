@@ -17,6 +17,7 @@ val nettyVersion: String by project
 
 plugins {
     `java-library`
+    kotlin("jvm") version "1.9.22"
 }
 
 dependencies {
@@ -49,8 +50,15 @@ dependencies {
     implementation("org.apache.commons:commons-csv:$commonsCsvVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("org.apache.commons:commons-math3:$commonsMathVersion")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.jar {
     manifest.attributes["Automatic-Module-Name"] = moduleName
+}
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(11)
 }

@@ -22,6 +22,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
+import finance.AccountPerformance;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -158,6 +159,13 @@ public class AccountsViewController implements MessageListener {
                         param.getValue().getValue().getReconciledTreeBalance())));
         reconciledBalanceColumn.setCellFactory(cell -> new AccountCommodityFormatTreeTableCell());
 
+        final TreeTableColumn<Account, String> netAssetValueColumn = new TreeTableColumn<>(resources.getString("Column.NetAssetValue"));
+        netAssetValueColumn.setCellValueFactory(param -> {
+            AccountPerformance ap = new AccountPerformance(param.getValue().getValue());
+            String display = String.format("%.2f", ap.computeNetAssetValue());
+            return new SimpleStringProperty(display);
+        });
+
         final TreeTableColumn<Account, String> currencyColumn = new TreeTableColumn<>(resources.getString("Column.Currency"));
         currencyColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getCurrencyNode().getSymbol()));
 
@@ -171,7 +179,7 @@ public class AccountsViewController implements MessageListener {
         codeColumn.setOnEditCommit(event -> updateAccountCode(event.getRowValue().getValue(), event.getNewValue()));
 
         treeTableView.getColumns().addAll(nameColumn, codeColumn, entriesColumn, balanceColumn,
-                reconciledBalanceColumn, currencyColumn, typeColumn);
+                reconciledBalanceColumn, currencyColumn, typeColumn, netAssetValueColumn);
 
         restoreColumnVisibility();
 
